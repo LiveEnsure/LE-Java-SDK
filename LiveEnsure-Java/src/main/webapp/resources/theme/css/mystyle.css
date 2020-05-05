@@ -1,0 +1,77 @@
+.content {
+	position: relative;
+	max-width: 500px;
+	margin: 10% auto;
+}
+
+.content .deleteButton {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
+.challenge {
+	margin: 10% auto;
+}
+
+.challenge>.button {
+	margin-block-end: 3%;
+}
+
+.result-show {
+	margin: 5% auto;
+}
+
+.heading {
+	margin-bottom: 6%;
+}
+
+.input {
+	margin-bottom: 2%;
+}
+
+
+
+<!--Bootstrap-->
+/* .container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+ */
+.btn {
+  border: 2px solid black;
+  border-radius: 5px;
+  background-color: white;
+  color: black;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Green */
+.success {
+  border-color: #4CAF50;
+  color: green;
+}
+
+.success:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+
+@media (min-width: 1200px)
+.container {
+    width: 100%;
+}
+
+@media (min-width: 992px)
+.container {
+    width: 100%;
+}
+
+@media (min-width: 768px)
+.container {
+    width: 100%;
+}
