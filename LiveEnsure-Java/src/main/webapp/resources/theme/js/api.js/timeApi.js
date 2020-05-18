@@ -1,22 +1,24 @@
 var sd=null;
 $(function() {
 	$("#challenge").on('click','#time',function() {
-		$("#challenge").html('<div class="row"><h2><span class="label label-success">Time Challenge</span></h2></div>'
-				+ '<div class="row"><div class="col-md-3"><h5><span class="label label-warning">Start Time :</span></h5></div><div class="col-md-9"><input type="text" class="form-control" id="startDate" /></div></div>'
-				+ '<div class="row"><h4><span class="label label-warning">Add Validation Period :</span></h4></div>'
-				+ '<div class="row"><div class="col-md-3"><h5><span class="label label-warning">Day : </span></h5></div><div class="col-md-1"><span class="input-group-btn"><button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="quant[1]"><span class="glyphicon glyphicon-minus"></span></button></span></div>'
+		$("#challenge").removeClass('challengeType-contact100-form-btn');
+		$("#hostchallenge").hide();
+		$("#challenge").html('<span class="contact100-form-title">Time Challenge</span>'
+				+ '<div class="wrap-input100"><span class="label-input100">Start Time *</span><input type="text" name="startDate" class="input100" id="startDate" placeholder="Enter your start date" /></div>'
+				+ '<div class="wrap-input100"><span class="label-input100">Add Validation Period </span></div>'
+				+ '<div class="row"><div class="col-md-3"><span class="label-input100">Day *</span></div><div class="col-md-1"><span class="input-group-btn"><button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="quant[1]"><span class="glyphicon glyphicon-minus"></span></button></span></div>'
 		        + '<div class="col-md-2"><input type="text" name="quant[1]" id="days" class="form-control input-number" value="0" min="0" max="10"></div>'
 		        + '<div class="col-md-1"><span class="input-group-btn"><button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quant[1]"><span class="glyphicon glyphicon-plus"></span></button></span></div></div>'
-		        + '<div class="row"><div class="col-md-3"><h5><span class="label label-warning">Hour(s) : </span></h5></div><div class="col-md-1"><span class="input-group-btn"><button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="quant[2]"><span class="glyphicon glyphicon-minus"></span></button></span></div>'
+		        + '<div class="row"><div class="col-md-3"><span class="label-input100">Hour(s) *</span></div><div class="col-md-1"><span class="input-group-btn"><button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="quant[2]"><span class="glyphicon glyphicon-minus"></span></button></span></div>'
 		        + '<div class="col-md-2"><input type="text" name="quant[2]" id="hours" class="form-control input-number" value="0" min="0" max="23"></div>'
 		        + '<div class="col-md-1"><span class="input-group-btn"><button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quant[2]"><span class="glyphicon glyphicon-plus"></span></button></span></div></div>'
-		        + '<div class="row"><div class="col-md-3"><h5><span class="label label-warning">Minute(s) : </span></h5></div><div class="col-md-1"><span class="input-group-btn"><button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="quant[3]"><span class="glyphicon glyphicon-minus"></span></button></span></div>'
+		        + '<div class="row"><div class="col-md-3"><span class="label-input100">Minute(s) *</span></div><div class="col-md-1"><span class="input-group-btn"><button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="quant[3]"><span class="glyphicon glyphicon-minus"></span></button></span></div>'
 		        + '<div class="col-md-2"><input type="text" name="quant[3]" id="minutes" class="form-control input-number" value="1" min="1" max="59"></div>'
 		        + '<div class="col-md-1"><span class="input-group-btn"><button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quant[3]"><span class="glyphicon glyphicon-plus"></span></button></span></div></div>'
-		        + '<div class="row"><div class="col-md-1"><input type="radio" name="inout" value="true" class="form-control"/></div><div class="col-md-2"><span class="label label-warning">In</span></div>'
-		        + '<div class="col-md-3"></div>'
-				+ '<div class="col-md-1"><input type="radio" name="inout" value="false" class="form-control"/></div><div class="col-md-2"><span class="label label-warning">Out</span></div></div>'
-				+ '<div class="row"><input id="timeChall" type="button" value="Submit" class="form-control btn success"/></div>');
+		        + '<div class="wrap-input100 rs1-wrap-input100 validate-input"><span class="label-input100">In </span><input type="radio" name="inoutV6" value="true" class="input100 radioInput100" /></div>'
+				+ '<div class="wrap-input100 rs1-wrap-input100 validate-input"><span class="label-input100">Out </span><input type="radio" name="inoutV6" value="false" class="input100 radioInput100" /></div>'
+				+ '<div class="wrap-contact100-form-btn"><div class="contact100-form-bgbtn"></div><button class="contact100-form-btn" id="timeChall">Submit</button></div>');
+				/*+ '<div class="row"><input id="timeChall" type="button" value="Submit" class="form-control btn success"/></div>');*/
 		
         $('#startDate').datetimepicker({
 //        	Default: moment.locale(),
@@ -103,15 +105,15 @@ function endDate(){
 }
 
 $("#challenge").on('click','#timeChall',function() {
-	$("#challenge").hide();
 	var sendInfo = {
 		sessionToken : session,
-		agentId : agent,
+		/*agentId : agent,*/
 		startDate : $("#startDate").val().trim(),
 		endDate : endDate(),
-		inout : $('input[name="inout"]:checked').val(),
+		inout : $('input[name="inoutV6"]:checked').val(),
 		required : "true"
 	};
+	$("#challenge").html('<span class="contact100-form-title">Time Challenge</span>');
 	$.ajax({
 		url : base_url + "/timeChallenge",
 		type : "POST",
@@ -121,7 +123,10 @@ $("#challenge").on('click','#timeChall',function() {
 		success : function(result) {
 			console.log(result);
 			pollStatus();
-			$('#show').show().prepend('<img id="theImg" src="' + result.FileUrl + '" />');
-		}
+			$('#show').html("").show().prepend('<img id="theImg" src="' + result.FileUrl + '" />');
+		},
+		error: function (textStatus, errorThrown) {
+			$('#show').show().html("Something went worng!!!");
+	    }
 	});
 });

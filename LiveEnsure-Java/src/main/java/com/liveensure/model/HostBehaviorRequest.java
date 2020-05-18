@@ -10,8 +10,8 @@ public class HostBehaviorRequest extends AgentConfigRequest{
 		// TODO Auto-generated constructor stub
 	}
 
-	public HostBehaviorRequest(String sessionToken, String agentId, String orientation, String touches, String required) {
-		super(sessionToken, agentId, required);
+	public HostBehaviorRequest(String sessionToken, String orientation, String touches, String required) {
+		super(sessionToken, required);
 		this.orientation = orientation;
 		this.touches = touches;
 	}
@@ -34,7 +34,7 @@ public class HostBehaviorRequest extends AgentConfigRequest{
 
 	@Override
 	public String toString() {
-		return "Behavior [getSessionToken()=" + getSessionToken() + ", getAgentId()=" + getAgentId() + ", orientation=" + orientation + ", touches=" + touches + "]";
+		return "Behavior [getSessionToken()=" + getSessionToken() + ", orientation=" + orientation + ", touches=" + touches + "]";
 	}
 
 }

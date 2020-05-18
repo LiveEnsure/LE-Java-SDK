@@ -10,8 +10,8 @@ public class PromptRequest extends AgentConfigRequest {
 		// TODO Auto-generated constructor stub
 	}
 
-	public PromptRequest(String sessionToken, String agentId, String ques, String ans, String required) {
-		super(sessionToken, agentId, required);
+	public PromptRequest(String sessionToken, String ques, String ans, String required) {
+		super(sessionToken, required);
 		this.ques = ques;
 		this.ans = ans;
 	}
@@ -34,7 +34,7 @@ public class PromptRequest extends AgentConfigRequest {
 
 	@Override
 	public String toString() {
-		return "Prompt [getSessionToken()=" + getSessionToken() + ", getAgentId()=" + getAgentId() + ", ques=" + ques + ", ans=" + ans + "]";
+		return "Prompt [getSessionToken()=" + getSessionToken() + ", ques=" + ques + ", ans=" + ans + "]";
 	}
 
 }

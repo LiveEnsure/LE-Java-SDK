@@ -3,7 +3,6 @@ package com.liveensure.model;
 public class AgentConfigRequest {
 	
 	private String sessionToken;
-	private String agentId;
 	private String required;
 	
 	public AgentConfigRequest() {
@@ -11,9 +10,8 @@ public class AgentConfigRequest {
 		// TODO Auto-generated constructor stub
 	}
 
-	public AgentConfigRequest(String sessionToken, String agentId, String required) {
+	public AgentConfigRequest(String sessionToken, String required) {
 		this.sessionToken = sessionToken;
-		this.agentId = agentId;
 		this.required = required;
 	}
 
@@ -23,14 +21,6 @@ public class AgentConfigRequest {
 
 	public void setSessionToken(String sessionToken) {
 		this.sessionToken = sessionToken;
-	}
-	
-	public String getAgentId() {
-		return agentId;
-	}
-
-	public void setAgentId(String agentId) {
-		this.agentId = agentId;
 	}
 	
 	public String getRequired() {
@@ -43,7 +33,7 @@ public class AgentConfigRequest {
 
 	@Override
 	public String toString() {
-		return "AgentConfigRequest [sessionToken=" + sessionToken + ", agentId=" + agentId + ", required=" + required + "]";
+		return "AgentConfigRequest [sessionToken=" + sessionToken + ", required=" + required + "]";
 	}
 
 }

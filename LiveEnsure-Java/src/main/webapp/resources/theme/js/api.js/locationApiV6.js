@@ -1,13 +1,15 @@
 $("#challenge").on('click', "#locationV6",function() {
 	if (navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition(showPositionV6, showErrorV6);
-		$("#challenge").html('<div class="heading">Location Challenge</div>'
-			+ 'Latitude : <input type="text" name="latitude" id="latitudeV6" class="input"/><br/>'
-			+ 'Longitude : <input type="text" name="longitude" id="longitudeV6" class="input"/><br/>'
-			+ 'Radius : <input type="text" name="radius" id="radiusV6" class="input"/> miles<br/>'
-			+ '<input type="radio" name="inoutV6" value="true" class="input"/> In<br/>'
-			+ '<input type="radio" name="inoutV6" value="false" class="input"/> Out<br/>'
-			+ '<input id="locationV6Chall" type="button" value="Submit" class="input"/>');
+		$("#challenge").removeClass('challengeType-contact100-form-btn');
+		$("#hostchallenge").hide();
+		$("#challenge").html('<span class="contact100-form-title">Location V6 Challenge</span>'
+				+ '<div class="wrap-input100 rs1-wrap-input100 validate-input"><span class="label-input100">Latitude *</span><input type="text" name="latitude" id="latitudeV6" class="input100" placeholder="Enter your latitude" /></div>'
+				+ '<div class="wrap-input100 rs1-wrap-input100 validate-input"><span class="label-input100">Longitude *</span><input type="text" name="longitude" id="longitudeV6" class="input100" placeholder="Enter your longitude" /></div>'
+				+ '<div class="wrap-input100"><span class="label-input100">Radius </span><input type="text" name="radius" id="radiusV6" class="input100" placeholder="Enter radius" /></div>'
+				+ '<div class="wrap-input100 rs1-wrap-input100 validate-input"><span class="label-input100">In </span><input type="radio" name="inoutV6" value="true" class="input100 radioInput100" /></div>'
+				+ '<div class="wrap-input100 rs1-wrap-input100 validate-input"><span class="label-input100">Out </span><input type="radio" name="inoutV6" value="false" class="input100 radioInput100" /></div>'
+				+ '<div class="wrap-contact100-form-btn"><div class="contact100-form-bgbtn"></div><button class="contact100-form-btn" id="locationV6Chall">Submit</button></div>');
 	} else {
 		console.log("Geolocation is not supported by this browser.");
 	}
@@ -15,17 +17,16 @@ $("#challenge").on('click', "#locationV6",function() {
 
 
 $("#challenge").on('click', "#locationV6Chall",function() {
-	$("#challenge").hide();
-	$("#show").html("");
 	var sendInfo = {
 		sessionToken : session,
-		agentId : agent,
+		/*agentId : agent,*/
 		latitude : $("#latitudeV6").val().trim(),
 		longitude : $("#longitudeV6").val().trim(),
 		radius : $("#radiusV6").val().trim() != "" ? $("#radiusV6").val().trim() : "100",
 		inout : $('input[name="inoutV6"]:checked').val(),
 		required : "true"
 	};
+	$("#challenge").html('<span class="contact100-form-title">Location V6 Challenge</span>');
 	$.ajax({
 		url : base_url + "/locationV6Challenge",
 		type : "POST",
@@ -35,8 +36,11 @@ $("#challenge").on('click', "#locationV6Chall",function() {
 		success : function(result) {
 			console.log(result);
 			pollStatus();
-			$('#show').show().prepend('<img id="theImg" src="' + result.FileUrl + '" />');
-		}
+			$('#show').html("").show().prepend('<img id="theImg" src="' + result.FileUrl + '" />');
+		},
+		error: function (textStatus, errorThrown) {
+			$('#show').show().html("Something went worng!!!");
+	    }
 	});
 });
 

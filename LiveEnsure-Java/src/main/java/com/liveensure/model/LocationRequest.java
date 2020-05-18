@@ -12,8 +12,8 @@ public class LocationRequest extends AgentConfigRequest {
 		// TODO Auto-generated constructor stub
 	}
 
-	public LocationRequest(String sessionToken, String agentId, String latitude, String longitude, String radius, String inout, String required) {
-		super(sessionToken, agentId, required);
+	public LocationRequest(String sessionToken, String latitude, String longitude, String radius, String inout, String required) {
+		super(sessionToken, required);
 		this.latitude = latitude;
 		this.longitude = longitude;
 		this.radius = radius;
@@ -54,7 +54,7 @@ public class LocationRequest extends AgentConfigRequest {
 
 	@Override
 	public String toString() {
-		return "Location [getSessionToken()=" + getSessionToken() + ", getAgentId()=" + getAgentId() + ", latitude=" + latitude + ", longitude=" + longitude + ", radius=" + radius + ", inout=" + inout + "]";
+		return "Location [getSessionToken()=" + getSessionToken() + ", latitude=" + latitude + ", longitude=" + longitude + ", radius=" + radius + ", inout=" + inout + "]";
 	}
 
 }

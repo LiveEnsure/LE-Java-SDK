@@ -13,7 +13,7 @@ public class Config {
 	// Standard API Variables [ DO NOT EDIT ]
 
 	static String apiVersion = "5";
-	static String pubHostBase = "https://staging.liveensure.com";//"https://liveensure.damcogroup.com:8443";//"http://172.29.100.187:8080";//"https://app.liveensure.com/";
+	static String pubHostBase = "https://staging.liveensure.com";//"https://liveensure.damcogroup.com:8443";//"https://app26.liveensure.com/";
 	static String leHostBase = pubHostBase + "/live-identity";
 	static String leRestUrl = leHostBase + "/rest";
 	static String leHostUrl = leRestUrl + "/host";
@@ -25,8 +25,24 @@ public class Config {
 	// --------------------------------------------------------------
 	// Developer Variables [ EDIT FOR YOUR ACCOUNT INFO ]
 
-//	static String agentId = ""; // your agentID
+	static final String agentId = "6958a370-1d27-43d1-9564-d3eb3f4dcbfb"; // your agentID
+	private static final String apiKey = "28ebfd62-874b-4254-9148-ce26a4d46cc2"; // your apiKey
 //	static String sessionToken = "";
+	
+//	Staging server credential mr.abhinaygupta@gmail.com
+//	#agent-id=6958a370-1d27-43d1-9564-d3eb3f4dcbfb
+//	#api-key=28ebfd62-874b-4254-9148-ce26a4d46cc2
+//	#api-password=jL34Q0FyY65YMKeO
+	
+//	Staging server credential client
+//	#agent-id=d7a20345-2e25-48fe-8617-external
+//	#api-key=6b582cbd-687a-4b5f-a921-905e84354cef0
+//	#api-password=JtvamAMqhpIrAuBB10
+	
+//	local server credential mr.abhinaygupta@gmail.com
+//	agent-id=31dbe2a0-fa64-46d0-96f0-2019c7143b23
+//	api-key=a139dd70-9923-497d-aead-5b33d6907055
+//	api-password=VxCjrFTTqwoqNsyr
 
 	// --------------------------------------------------------------
 	/**
@@ -37,7 +53,7 @@ public class Config {
 	 * @param apiKey
 	 * @return
 	 */
-	public static Map<String, Object> leStartSession(String userId, String agentId, String apiKey) {
+	public static Map<String, Object> leStartSession(String userId) {
 		
 		System.out.println("Start Session Called......................");
 		Map<String, Object> loginParams = new HashMap<>();
@@ -84,7 +100,7 @@ public class Config {
 	 * @param agentId
 	 * @return
 	 */
-	public static Map<String, Object> deleteUser(String userId, String agentId) {
+	public static Map<String, Object> deleteUser(String userId) {
 		
 		String params = "userId="+userId+"&agentId="+agentId;
 

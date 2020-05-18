@@ -9,8 +9,8 @@ public class BiometricRequest extends AgentConfigRequest {
 		// TODO Auto-generated constructor stub
 	}
 
-	public BiometricRequest(String sessionToken, String agentId, String touches, String required) {
-		super(sessionToken, agentId, required);
+	public BiometricRequest(String sessionToken, String touches, String required) {
+		super(sessionToken, required);
 		this.touches = touches;
 	}
 
@@ -24,7 +24,7 @@ public class BiometricRequest extends AgentConfigRequest {
 
 	@Override
 	public String toString() {
-		return "Biometric [getSessionToken()=" + getSessionToken() + ", getAgentId()=" + getAgentId() + ", touch=" + touches + "]";
+		return "Biometric [getSessionToken()=" + getSessionToken() + ", touch=" + touches + "]";
 	}
 	
 }

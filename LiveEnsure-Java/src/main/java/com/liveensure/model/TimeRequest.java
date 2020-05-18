@@ -11,8 +11,8 @@ public class TimeRequest extends AgentConfigRequest {
 		// TODO Auto-generated constructor stub
 	}
 
-	public TimeRequest(String sessionToken, String agentId, String startDate, String endDate, String inout, String required) {
-		super(sessionToken, agentId, required);
+	public TimeRequest(String sessionToken, String startDate, String endDate, String inout, String required) {
+		super(sessionToken, required);
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.inout = inout;
@@ -44,7 +44,7 @@ public class TimeRequest extends AgentConfigRequest {
 
 	@Override
 	public String toString() {
-		return "Time [getSessionToken()=" + getSessionToken() + ", getAgentId()=" + getAgentId() + ", startDate=" + startDate + ", endDate=" + endDate + ", inout=" + inout + "]";
+		return "Time [getSessionToken()=" + getSessionToken() + ", startDate=" + startDate + ", endDate=" + endDate + ", inout=" + inout + "]";
 	}
 	
 }

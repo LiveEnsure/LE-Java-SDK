@@ -9,8 +9,8 @@ public class WearableRequest extends AgentConfigRequest {
 		// TODO Auto-generated constructor stub
 	}
 
-	public WearableRequest(String sessionToken, String agentId, String deviceId, String required) {
-		super(sessionToken, agentId, required);
+	public WearableRequest(String sessionToken, String deviceId, String required) {
+		super(sessionToken, required);
 		this.deviceId = deviceId;
 	}
 
@@ -24,7 +24,7 @@ public class WearableRequest extends AgentConfigRequest {
 
 	@Override
 	public String toString() {
-		return "Wearable [getSessionToken()=" + getSessionToken() + ", getAgentId()=" + getAgentId() + ", deviceId=" + deviceId+ "]";
+		return "Wearable [getSessionToken()=" + getSessionToken() + ", deviceId=" + deviceId+ "]";
 	}
 	
 }

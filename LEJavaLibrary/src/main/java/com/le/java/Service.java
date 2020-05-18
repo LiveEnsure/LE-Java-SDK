@@ -108,15 +108,14 @@ class Service {
 
 			Map<String, Object> objResponse = gson.fromJson(responseBody, new TypeToken<HashMap<String, Object>>() {
 			}.getType());
-			response.close();
+			response.body().close();
 			return objResponse;
 		} catch (IOException ex) {
 			System.out.println(ex.getMessage());
-			return null;
 		} catch (Exception ex) {
 			System.out.println(ex.getMessage());
-			return null;
 		}
+		return null;
 	}
 
 	/**
@@ -147,15 +146,14 @@ class Service {
 
 			Map<String, Object> objResponse = gson.fromJson(responseBody, new TypeToken<HashMap<String, Object>>() {
 			}.getType());
-			response.close();
+			response.body().close();
 			return objResponse;
 		} catch (IOException ex) {
 			System.out.println(ex.getMessage());
-			return null;
 		} catch (Exception ex) {
 			System.out.println(ex.getMessage());
-			return null;
 		}
+		return null;
 	}
 
 	/**
@@ -200,15 +198,14 @@ class Service {
 				}
 			}
 			
-			response.close();
+			response.body().close();
 			return objResponse;
 		} catch (IOException ex) {
 			System.out.println(ex.getMessage());
-			return null;
 		} catch (Exception ex) {
 			System.out.println(ex.getMessage());
-			return null;
 		}
+		return null;
 	}
 	
 	/**
@@ -240,15 +237,14 @@ class Service {
 
 			Map<String, Object> objResponse = gson.fromJson(responseBody, new TypeToken<HashMap<String, Object>>() {
 			}.getType());
-			response.close();
+			response.body().close();
 			return objResponse;
 		} catch (IOException ex) {
 			System.out.println(ex.getMessage());
-			return null;
 		} catch (Exception ex) {
 			System.out.println(ex.getMessage());
-			return null;
 		}
+		return null;
 	}
 
 	/**
@@ -278,15 +274,14 @@ class Service {
 
 			Map<String, Object> objResponse = gson.fromJson(responseBody, new TypeToken<HashMap<String, Object>>() {
 			}.getType());
-			response.close();
+			response.body().close();
 			return objResponse;
 		} catch (IOException ex) {
 			System.out.println(ex.getMessage());
-			return null;
 		} catch (Exception ex) {
 			System.out.println(ex.getMessage());
-			return null;
 		}
+		return null;
 	}
 
 }

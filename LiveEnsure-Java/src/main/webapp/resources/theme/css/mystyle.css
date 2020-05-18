@@ -1,7 +1,27 @@
+.radioInput100 {
+	display: inline-flex;
+    width: 25%
+}
+
+img {
+	align-items: center;
+}
+
+.challengeType-contact100-form-btn {
+    width: 50%;
+    display: -webkit-inline-box;;
+}
+
+.buttonFade {opacity: 0.5}
+
+
+
+
+
 .content {
 	position: relative;
-	max-width: 500px;
-	margin: 10% auto;
+    margin-top: 3%;
+    margin-left: 30%;
 }
 
 .content .deleteButton {

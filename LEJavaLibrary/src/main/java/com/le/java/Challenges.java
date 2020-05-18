@@ -14,11 +14,11 @@ public class Challenges {
 	private static String maxAt = "1"; // Max retries
 
 	/**
-	 * @param agentId
+
 	 * @param sessionToken
 	 * @return
 	 */
-	public static Map<String, Object> pollStatus(String agentId, String sessionToken) {
+	public static Map<String, Object> pollStatus(String sessionToken) {
 		Map<String, Object> responseData = new HashMap<>();
 		System.out.println("Polling for status...");
 
@@ -27,7 +27,7 @@ public class Challenges {
 			return responseData;
 		}
 		String requestUrl = new StringBuffer(Config.leHostUrl).append("/session/")
-				.append(sessionToken).append("/").append(agentId).toString();
+				.append(sessionToken).append("/").append(Config.agentId).toString();
 
 		responseData = Service.getServiceObject().MakeGetRequest(requestUrl);
 
@@ -49,12 +49,11 @@ public class Challenges {
 
 	/**
 	 * @param sessionToken
-	 * @param agentId
 	 * @param question
 	 * @param answer
 	 * @return
 	 */
-	public static Map<String, Object> addPromptChallenge(String sessionToken, String agentId, String question, String answer, String required) {
+	public static Map<String, Object> addPromptChallenge(String sessionToken, String question, String answer, String required) {
 
 		String type = "PROMPT";
 
@@ -68,7 +67,7 @@ public class Challenges {
 		Map<String, Object> data = new HashMap<>();
 		data.put("sessionToken", sessionToken);
 		data.put("challengeType", type);
-		data.put("agentId", agentId);
+		data.put("agentId", Config.agentId);
 		data.put("challengeDetails", challengeDetails);
 
 		System.out.println("Adding a PROMPT challenge ..." + data);
@@ -84,12 +83,11 @@ public class Challenges {
 
 	/**
 	 * @param sessionToken
-	 * @param agentId
 	 * @param prompt
 	 * @param pin
 	 * @return
 	 */
-	public static Map<String, Object> addPinChallenge(String sessionToken, String agentId, String prompt, String pin, String required) {
+	public static Map<String, Object> addPinChallenge(String sessionToken, String prompt, String pin, String required) {
 
 		String type = "PIN";
 
@@ -103,7 +101,7 @@ public class Challenges {
 		Map<String, Object> data = new HashMap<>();
 		data.put("sessionToken", sessionToken);
 		data.put("challengeType", type);
-		data.put("agentId", agentId);
+		data.put("agentId", Config.agentId);
 		data.put("challengeDetails", challengeDetails);
 
 		System.out.println("Adding a PIN challenge ..." + data);
@@ -119,12 +117,11 @@ public class Challenges {
 
 	/**
 	 * @param sessionToken
-	 * @param agentId
 	 * @param orientation
 	 * @param touches
 	 * @return
 	 */
-	public static Map<String, Object> addHostBehaviorChallenge(String sessionToken, String agentId, String orientation, String touches, String required) {
+	public static Map<String, Object> addHostBehaviorChallenge(String sessionToken, String orientation, String touches, String required) {
 
 		String type = "HOST_BEHAVIOR"; // Required
 		String regionCount = "6"; // Grid pattern
@@ -140,7 +137,7 @@ public class Challenges {
 		Map<String, Object> data = new HashMap<>();
 		data.put("sessionToken", sessionToken);
 		data.put("challengeType", type);
-		data.put("agentId", agentId);
+		data.put("agentId", Config.agentId);
 		data.put("challengeDetails", details);
 
 		System.out.println("Adding a HOST_BEHAVIOR challenge ..." + data);
@@ -156,11 +153,10 @@ public class Challenges {
 
 	/**
 	 * @param sessionToken
-	 * @param agentId
 	 * @param touches
 	 * @return
 	 */
-	public static Map<String, Object> addHostBehaviorV6Challenge(String sessionToken, String agentId, String touches, String required) {
+	public static Map<String, Object> addHostBehaviorV6Challenge(String sessionToken, String touches, String required) {
 
 		String type = "HOST_BEHAVIOR_V6"; // Required
 		String regionCount = "6"; // Grid pattern
@@ -175,7 +171,7 @@ public class Challenges {
 		Map<String, Object> data = new HashMap<>();
 		data.put("sessionToken", sessionToken);
 		data.put("challengeType", type);
-		data.put("agentId", agentId);
+		data.put("agentId", Config.agentId);
 		data.put("challengeDetails", details);
 
 		System.out.println("Adding a HOST_BEHAVIOR_V6 challenge ..." + data);
@@ -191,13 +187,12 @@ public class Challenges {
 	
 	/**
 	 * @param sessionToken
-	 * @param agentId
 	 * @param latitude
 	 * @param longitude
 	 * @param radius
 	 * @return
 	 */
-	public static Map<String, Object> addLatLongChallenge(String sessionToken, String agentId, String latitude, String longitude, String radius, String required) {
+	public static Map<String, Object> addLatLongChallenge(String sessionToken, String latitude, String longitude, String radius, String required) {
 
 		String type = "LAT_LONG"; // Required
 
@@ -212,7 +207,7 @@ public class Challenges {
 		Map<String, Object> data = new HashMap<>();
 		data.put("sessionToken", sessionToken);
 		data.put("challengeType", type);
-		data.put("agentId", agentId);
+		data.put("agentId", Config.agentId);
 		data.put("challengeDetails", details);
 
 		System.out.println("Adding LAT_LONG challenge ... " + data);
@@ -228,14 +223,13 @@ public class Challenges {
 	
 	/**
 	 * @param sessionToken
-	 * @param agentId
 	 * @param latitude
 	 * @param longitude
 	 * @param radius
 	 * @param inout
 	 * @return
 	 */
-	public static Map<String, Object> addLatLongV6Challenge(String sessionToken, String agentId, String latitude, String longitude, String radius, String inout, String required) {
+	public static Map<String, Object> addLatLongV6Challenge(String sessionToken, String latitude, String longitude, String radius, String inout, String required) {
 
 		String type = "LAT_LONG_V6"; // Required
 
@@ -251,7 +245,7 @@ public class Challenges {
 		Map<String, Object> data = new HashMap<>();
 		data.put("sessionToken", sessionToken);
 		data.put("challengeType", type);
-		data.put("agentId", agentId);
+		data.put("agentId", Config.agentId);
 		data.put("challengeDetails", details);
 
 		System.out.println("Adding LAT_LONG_V6 challenge ... " + data);
@@ -267,11 +261,10 @@ public class Challenges {
 	
 	/**
 	 * @param sessionToken
-	 * @param agentId
 	 * @param touch
 	 * @return
 	 */
-	public static Map<String, Object> addBiometricChallenge(String sessionToken, String agentId, String touches, String required) {
+	public static Map<String, Object> addBiometricChallenge(String sessionToken, String touches, String required) {
 
 		String type = "BIOMETRIC";
 
@@ -284,7 +277,7 @@ public class Challenges {
 		Map<String, Object> data = new HashMap<>();
 		data.put("sessionToken", sessionToken);
 		data.put("challengeType", type);
-		data.put("agentId", agentId);
+		data.put("agentId", Config.agentId);
 		data.put("challengeDetails", challengeDetails);
 
 		System.out.println("Adding a BIOMETRIC challenge ..." + data);
@@ -301,13 +294,12 @@ public class Challenges {
 	
 	/**
 	 * @param sessionToken
-	 * @param agentId
 	 * @param startDate
 	 * @param endDate
 	 * @param inout
 	 * @return
 	 */
-	public static Map<String, Object> addTimeChallenge(String sessionToken, String agentId, String startDate, String endDate, String inout, String required) {
+	public static Map<String, Object> addTimeChallenge(String sessionToken, String startDate, String endDate, String inout, String required) {
 
 		String type = "TIME";
 
@@ -322,7 +314,7 @@ public class Challenges {
 		Map<String, Object> data = new HashMap<>();
 		data.put("sessionToken", sessionToken);
 		data.put("challengeType", type);
-		data.put("agentId", agentId);
+		data.put("agentId", Config.agentId);
 		data.put("challengeDetails", challengeDetails);
 
 		System.out.println("Adding a TIME challenge ..." + data);
@@ -338,11 +330,10 @@ public class Challenges {
 
 	/**
 	 * @param sessionToken
-	 * @param agentId
 	 * @param deviceId
 	 * @return
 	 */
-	public static Map<String, Object> addWearableChallenge(String sessionToken, String agentId, String deviceId, String required) {
+	public static Map<String, Object> addWearableChallenge(String sessionToken, String deviceId, String required) {
 
 		String type = "WEARABLE";
 
@@ -355,7 +346,7 @@ public class Challenges {
 		Map<String, Object> data = new HashMap<>();
 		data.put("sessionToken", sessionToken);
 		data.put("challengeType", type);
-		data.put("agentId", agentId);
+		data.put("agentId", Config.agentId);
 		data.put("challengeDetails", challengeDetails);
 
 		System.out.println("Adding a WEARABLE challenge ..." + data);

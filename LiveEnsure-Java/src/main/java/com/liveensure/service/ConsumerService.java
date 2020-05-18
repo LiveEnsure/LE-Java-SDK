@@ -15,10 +15,12 @@ import com.liveensure.model.ConsumerRequest;
 public class ConsumerService {
 
 	public Map<String, Object> registerConsumer(ConsumerRequest cr) {
+		System.out.println("consumer request =========="+cr);
 		Gson gson = new Gson();
 		Map<String, Object> responseObj = new HashMap<String, Object>();
 		Map<String, Object> responseData = Config.registerConsumer(cr.getEmail(), cr.getFirstName(), cr.getLastName(),
 				"US", "123456789");
+				
 		JSONObject jsonObject = new JSONObject(responseData);
 		if (jsonObject.has("consumer")) {
 			JSONObject getSth = jsonObject.getJSONObject("consumer");
@@ -38,6 +40,7 @@ public class ConsumerService {
 		} else {
 			responseObj.put("response", responseData.get("response"));
 		}
+		System.out.println(responseObj);
 		return responseObj;
 	}
 }

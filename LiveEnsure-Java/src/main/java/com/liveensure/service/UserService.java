@@ -11,6 +11,6 @@ import com.liveensure.model.ConsumerRequest;
 public class UserService {
 
 	public Map<String, Object> deleteUser(ConsumerRequest cr) {
-		return Config.deleteUser(cr.getEmail(), cr.getAgentId());
+		return Config.deleteUser(cr.getEmail());
 	}
 }

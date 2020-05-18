@@ -11,8 +11,8 @@ public class DeviceRequest extends ConsumerRequest{
 		super();
 	}
 
-	public DeviceRequest(String firstName, String lastName, String email, String apiKey, String agentId, String challengeType, Map<String, Object> challengeDetails) {
-		super(firstName, lastName, email, apiKey, agentId);
+	public DeviceRequest(String firstName, String lastName, String email, String challengeType, Map<String, Object> challengeDetails) {
+		super(firstName, lastName, email);
 		this.challengeType = challengeType;
 		this.challengeDetails = challengeDetails;
 	}
@@ -35,8 +35,7 @@ public class DeviceRequest extends ConsumerRequest{
 
 	@Override
 	public String toString() {
-		return "DeviceRequest [getFirstName()=" + getFirstName() + ", getLastName()=" + getLastName() + ", getEmail()=" + getEmail() + ", getApiKey()=" + getApiKey()
-				+ ", getAgentId()=" + getAgentId() + ", challengeType=" + challengeType + ", challengeDetails=" + challengeDetails +"]";
+		return "DeviceRequest [getFirstName()=" + getFirstName() + ", getLastName()=" + getLastName() + ", getEmail()=" + getEmail() + ", challengeType=" + challengeType + ", challengeDetails=" + challengeDetails +"]";
 	}
 	
 }
