@@ -25,9 +25,15 @@ public class Config {
 	// --------------------------------------------------------------
 	// Developer Variables [ EDIT FOR YOUR ACCOUNT INFO ]
 
-	static final String agentId = "6958a370-1d27-43d1-9564-d3eb3f4dcbfb"; // your agentID
-	private static final String apiKey = "28ebfd62-874b-4254-9148-ce26a4d46cc2"; // your apiKey
+	static final String agentId = "618ccf85-04d9-4668-936e-a80f8ea8cc1b"; // your agentID
+	private static final String apiKey = "2b60d5ee-6c7e-44ca-a130-63012914d67e"; // your apiKey
 //	static String sessionToken = "";
+	
+//	Staging server credential mr.abhinaygupta@gmail.com
+//	User Id : mr.abhinaygupta@gmail.com
+//	Agent Id : 618ccf85-04d9-4668-936e-a80f8ea8cc1b
+//	API Key : 2b60d5ee-6c7e-44ca-a130-63012914d67e
+//	Agent Password : e6sgi3hp7RV7WRXI
 	
 //	Staging server credential mr.abhinaygupta@gmail.com
 //	#agent-id=6958a370-1d27-43d1-9564-d3eb3f4dcbfb
@@ -43,6 +49,10 @@ public class Config {
 //	agent-id=31dbe2a0-fa64-46d0-96f0-2019c7143b23
 //	api-key=a139dd70-9923-497d-aead-5b33d6907055
 //	api-password=VxCjrFTTqwoqNsyr
+	
+
+
+
 
 	// --------------------------------------------------------------
 	/**
