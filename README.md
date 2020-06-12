@@ -36,16 +36,16 @@ Below packages need to be installed and configured:
 
 To install `LEJavaLibrary` app, follw the given steps
     
-    add LEJavaLibrary.jdk in the project 
+	add LEJavaLibrary.jdk in the project 
 
 ### Configuration
 
-* Call leStartSession from Config.cs:
+* Call leStartSession from Config.java:
 ```
-  Config.leStartSession( le UserId,  le Agent Id,  le Api Key,  le Api Pass )
+	Config.leStartSession( le email, le Agent Id, le Api Key, le Api Pass )
 ```
 
-* Make any challenge from Challenge class
+* Make any challenge from Challenge.java
 
 ```
 ```
@@ -101,7 +101,7 @@ The rest of the demos function as they do in the desktop version.
 
 ## Using the SDK with your own stack/app/code
 
-To use the SDK in your own code, You can copy `api.jar` in your own stack. It is a class based
+To use the SDK in your own code, You can copy `LEJavaLibrary.jar` in your own stack. It is a class based
 implementation of all the api, which internally calls the liveensure API using `requests`.
 
 This can be used as follows:
@@ -109,69 +109,122 @@ This can be used as follows:
 - Create LiveEnsure object (required)
 
 ```  
-  # api_key is the API key for liveensure
-  # api_password is the API password for liveensure 
-  # agent_id is the Agent ID for liveensure
-  # host_to_access_API is the Host location where API's are hosted
+	# api_key is the API key for liveensure
+	# api_password is the API password for liveensure 
+	# agent_id is the Agent ID for liveensure
+	# host_to_access_API is the Host location where API's are hosted
   
-  # Make sure you have all these keys before you start using the APIs
-  
+	# Make sure you have all these keys before you start using the APIs
 ```
 
-- leStartSession (required)
+- Start Session (required)
 
 ```      
-  # email is the user id for which authentication is to be done
+	# email is the user id for which authentication is to be done
 
-
+	Config.leStartSession( le email, le Agent Id, le Api Key, le Api Pass )
 ```
 
-  It will return JSON object which have the `sessionToken`, that will be used in all subsequent calls.
+	It will return JSON object which have the `sessionToken`, that will be used in all subsequent calls.
   
 
 - Add factors (optional)
 
+	* Add biometric challenge for v6
+          
+		```
+			# Make a request to create a v6 biometric challenge
+			
+			# touches is your fingureprint on mobile phone sensor
+		```
+
+	* Add behaviour challenge for v5
+          
+		```
+			# Make a request to create a v5 behavior challenge
+			
+			# orientation is the orientation of mobile phone used to scan the 
+			# code. It can have 4 values range from 0 to 3
+			# 0 -> Portrait
+			# 1 -> Upside down
+			# 2 -> Landscape Left
+			# 3 -> Landscape Right
+			
+			# touches number of touch points up to 6
+		```
+		  
+	* Add behaviour challenge for v6
+          
+		```
+			# Make a request to create a v6 behavior challenge
+			
+			# touches is number of touch points up to 9 and design a pattern between 9 dots
+		```
+		  
+	* Add location challenge for v5
+
+		```
+			# Make a request to create a v5 location challenge
+			
+			# lat is latitude of location
+			# lang is the longitude of the location
+			# radius is the radius limit of location authentication
+		```
+		  
+	* Add location challenge for v6
+
+		```
+			# Make a request to create a v6 location challenge
+			
+			# lat is latitude of location
+			# lang is the longitude of the location
+			# radius is the radius limit of location authentication
+			# inout is inside the radius or outside the radius
+		```
+		  
     * Add knowledge challenge
 
-          ```          
-            # question is the question to be asked after scanning the code
-            # answer is the answer to the question 
-            # session Token is the session key that is returned by initSession call.
+		```
+			# Make a request to create a knowledge challenge
+			
+			# question is the question to be asked after scanning the code
+			# answer is the answer to the question 
+			# session Token is the session key that is returned by initSession call.
+		```
+		  
+	* Add time challenge for v6
+
+		```
+			# Make a request to create a v6 time challenge
+			
+			# startDate is the combination of date and time
+			# endDate is the combination of date and time 
+			# inout is inside the time lap or outside the time lap
+		```
+		  
+	* Add wearable challenge for v6
+
+		```
+			# Make a request to create a v6 wearable challenge
+			
+			# deviceId is list of all wearable devices
+		```
+
+	It will return json object with status of the API call.
+
     
-          ```
 
-      It will return json object with status of the API call.
-
-    * Add location challenge
-
-          ```
-            # lat is latitude of location
-            # lang is the longitude of the location
-            # radius is the radius limit of location authentication
-            
-          ```
-
-    * Add behaviour challenge
-          
-          ```
-            # orientation is the orientation of mobile phone used to scan the 
-            # code. It can have 4 values range from 0 to 3
-            # 0 -> Portrait
-            # 1 -> Upside down
-            # 2 -> Landscape Left
-            # 3 -> Landscape Right
-            
-            # touches number of touch points up to 6
-          ```
+    
 - Get the session token (required)
 
 ```
+	Config.leStartSession( le email, le Agent Id, le Api Key, le Api Pass )
 ```
 
 - Create the login object/link to scan or tap (required)
 
 ```
-TBD ....
+	TBD ....
 ```
 This is the moment the user scans or taps on mobile to authenticate
 and performs their authentication factors as configured above. 
@@ -180,18 +233,20 @@ During this process you may poll for status in the background.
 - Poll for session status (required)
 
 ```      
+	Challenges.pollStatus( le Session Token, le Agent Id )
 ```
 
 - Delete user (optional)
 
 ```    
-  # email: email of the user that is to be deleted
+	# email: email of the user that is to be deleted
   
+	Config.deleteUser( le email, String Agent Id )
 ```
 
 ## Built With
 
-* JDK 11.0+
+* JDK 8.0+
 * Any IDE(eclipse)
 * Google Map APIs
 * LiveEnsure Authentication APIs
@@ -199,7 +254,7 @@ During this process you may poll for status in the background.
 
 ## Versioning
 
-Current Version: **0.01**
+Current Version: **1.0**
 
 ## Authors
 
@@ -209,7 +264,7 @@ Current Version: **0.01**
 
 ## License
 
-This project is proprietary software (c) 2019 LiveEnsure Inc. 
+This project is proprietary software (c) 2020 LiveEnsure Inc. 
 Visit http://www.liveensure.com for more information.
 
 ## Contact
@@ -219,4 +274,3 @@ Visit http://www.liveensure.com for more information.
 * Support: http://support.liveensure.com 
 
 =======
-
