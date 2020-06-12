@@ -1,7 +1,7 @@
 # LiveEnsure Java SDK
 
 This is the LiveEnsure® JAVA SDK for LiveEnsure Authentication (www.liveensure.com)
->From this SDK you will be able to launch a full API stack in JAVA, XAMARIN FORMS and demonstrate the 
+>From this SDK you will be able to launch a full API stack in JAVA and demonstrate the 
 full capabilities of LiveEnsure® Authentication for web, cloud, apps and mobile.
 
 The SDK is provided to illustrate how to integrate LiveEnsure® with your identity, web or
@@ -35,8 +35,9 @@ Below packages need to be installed and configured:
 ### Installing
 
 To install `LEJavaLibrary` app, follw the given steps
-    
+```
 	add LEJavaLibrary.jdk in the project 
+```
 
 ### Configuration
 
@@ -48,6 +49,7 @@ To install `LEJavaLibrary` app, follw the given steps
 * Make any challenge from Challenge.java
 
 ```
+	
 ```
 
 ## Running the SDK
@@ -123,10 +125,9 @@ This can be used as follows:
 	# email is the user id for which authentication is to be done
 
 	Config.leStartSession( le email, le Agent Id, le Api Key, le Api Pass )
+	
+	# It will return JSON object which have the `sessionToken`, that will be used in all subsequent calls.
 ```
-
-	It will return JSON object which have the `sessionToken`, that will be used in all subsequent calls.
-  
 
 - Add factors (optional)
 
