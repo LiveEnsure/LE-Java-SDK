@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author user
+ * @author Abhinay Gupta
  *
  */
 public class Config {
@@ -13,57 +13,33 @@ public class Config {
 	// Standard API Variables [ DO NOT EDIT ]
 
 	static String apiVersion = "5";
-	static String pubHostBase = "https://staging.liveensure.com";//"https://liveensure.damcogroup.com:8443";//"https://app26.liveensure.com/";
+	static String pubHostBase = "https://app.liveensure.com/";
 	static String leHostBase = pubHostBase + "/live-identity";
 	static String leRestUrl = leHostBase + "/rest";
 	static String leHostUrl = leRestUrl + "/host";
 	static String challengeUrl = leHostUrl + "/challenge";
 	static String stackLocation = "US";
-//	static String log = "";
+	static String log = "";
 	static boolean DEBUG = false;
 
 	// --------------------------------------------------------------
 	// Developer Variables [ EDIT FOR YOUR ACCOUNT INFO ]
 
-	static final String agentId = "618ccf85-04d9-4668-936e-a80f8ea8cc1b"; // your agentID
-	private static final String apiKey = "2b60d5ee-6c7e-44ca-a130-63012914d67e"; // your apiKey
-//	static String sessionToken = "";
-	
-//	Staging server credential mr.abhinaygupta@gmail.com
-//	User Id : mr.abhinaygupta@gmail.com
-//	Agent Id : 618ccf85-04d9-4668-936e-a80f8ea8cc1b
-//	API Key : 2b60d5ee-6c7e-44ca-a130-63012914d67e
-//	Agent Password : e6sgi3hp7RV7WRXI
-	
-//	Staging server credential mr.abhinaygupta@gmail.com
-//	#agent-id=6958a370-1d27-43d1-9564-d3eb3f4dcbfb
-//	#api-key=28ebfd62-874b-4254-9148-ce26a4d46cc2
-//	#api-password=jL34Q0FyY65YMKeO
-	
-//	Staging server credential client
-//	#agent-id=d7a20345-2e25-48fe-8617-external
-//	#api-key=6b582cbd-687a-4b5f-a921-905e84354cef0
-//	#api-password=JtvamAMqhpIrAuBB10
-	
-//	local server credential mr.abhinaygupta@gmail.com
-//	agent-id=31dbe2a0-fa64-46d0-96f0-2019c7143b23
-//	api-key=a139dd70-9923-497d-aead-5b33d6907055
-//	api-password=VxCjrFTTqwoqNsyr
-	
-
-
-
+//	static final String AGENT_ID = ""; // your agentID
+//	private static final String API_KEY = ""; // your apiKey
+//	private static final String API_PASS = ""; // your apiKey
+//	static String sessionToken = ""; //your sessionToken
 
 	// --------------------------------------------------------------
 	/**
-	 * Make an request to get authenticate and get a sessionToken in Response
+	 * Make a request to get authenticate and get a session token in response
 	 * 
 	 * @param userId
 	 * @param agentId
 	 * @param apiKey
-	 * @return
+	 * @return sessionToken
 	 */
-	public static Map<String, Object> leStartSession(String userId) {
+	public static Map<String, Object> leStartSession(String userId, String agentId, String apiKey, String ApiPass) {
 		
 		System.out.println("Start Session Called......................");
 		Map<String, Object> loginParams = new HashMap<>();
@@ -81,12 +57,14 @@ public class Config {
 	}
 	
 	/**
+	 * Make a request to registered a consumer 
+	 * 
 	 * @param email
 	 * @param firstName
 	 * @param lastName
 	 * @param country
 	 * @param mobile
-	 * @return
+	 * @return registerDetails
 	 */
 	public static Map<String, Object> registerConsumer(String email, String firstName, String lastName, String country, String mobile) {
 		
@@ -106,14 +84,15 @@ public class Config {
 	
 	
 	/**
+	 * Make a request to delete an user
+	 * 
 	 * @param userId
 	 * @param agentId
-	 * @return
+	 * @return deleteUserDetails
 	 */
-	public static Map<String, Object> deleteUser(String userId) {
+	public static Map<String, Object> deleteUser(String userId, String agentId) {
 		
 		String params = "userId="+userId+"&agentId="+agentId;
-
 		String requestUrl = new StringBuffer(Config.leHostUrl).append("/user").toString();
 		Map<String, Object> responseData = Service.getServiceObject().MakeDeleteRequest(requestUrl, params, "application/x-www-form-urlencoded");
 		System.out.println("responseData " + responseData);

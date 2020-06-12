@@ -28,7 +28,7 @@ For questions about this SDK or LiveEnsure® authentication, visit support.livee
 
 Below packages need to be installed and configured:
 - network accessible server (or virtual instance)
-- JDK 11.0+ applications.
+- JDK 8.0+ applications.
 - Obtain LiveEnsure® developer API keys by signup (http://www.liveensure.com/signup.html) and then click the link "Send me my credentials by email" after login
 - Google MAP api key (optional for location factors)
 
@@ -36,20 +36,18 @@ Below packages need to be installed and configured:
 
 To install `LEJavaLibrary` app, follw the given steps
     
-    add LECSharpLibrary.jdk in the project 
+    add LEJavaLibrary.jdk in the project 
 
 ### Configuration
 
 * Call leStartSession from Config.cs:
 ```
-  Config.leStartSession( le UserId,  le Agent Id,  le Api Key,  le Api Pass)
+  Config.leStartSession( le UserId,  le Agent Id,  le Api Key,  le Api Pass )
 ```
 
 * Make any challenge from Challenge class
 
 ```
-```
-
 ```
 
 ## Running the SDK

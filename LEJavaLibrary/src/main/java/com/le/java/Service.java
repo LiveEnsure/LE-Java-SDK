@@ -4,13 +4,6 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLSession;
-import javax.net.ssl.SSLSocketFactory;
-import javax.net.ssl.TrustManager;
-import javax.net.ssl.X509TrustManager;
-
 import org.json.JSONObject;
 import org.json.XML;
 
@@ -26,7 +19,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 /**
- * @author Service
+ * @author Abhinay Gupta
  *
  */
 class Service {
@@ -43,49 +36,6 @@ class Service {
 	}
 
 	/**
-	 * @return
-	 */
-	private OkHttpClient getUnsafeOkHttpClient() {
-		try {
-			// Create a trust manager that does not validate certificate chains
-			final TrustManager[] trustAllCerts = new TrustManager[] { new X509TrustManager() {
-				@Override
-				public void checkClientTrusted(java.security.cert.X509Certificate[] chain, String authType) {
-				}
-
-				@Override
-				public void checkServerTrusted(java.security.cert.X509Certificate[] chain, String authType) {
-				}
-
-				@Override
-				public java.security.cert.X509Certificate[] getAcceptedIssuers() {
-					return new java.security.cert.X509Certificate[] {};
-				}
-			} };
-
-			// Install the all-trusting trust manager
-			final SSLContext sslContext = SSLContext.getInstance("SSL");
-			sslContext.init(null, trustAllCerts, new java.security.SecureRandom());
-			// Create an ssl socket factory with our all-trusting manager
-			final SSLSocketFactory sslSocketFactory = sslContext.getSocketFactory();
-
-			OkHttpClient.Builder builder = new OkHttpClient.Builder();
-			builder.sslSocketFactory(sslSocketFactory, (X509TrustManager) trustAllCerts[0]);
-			builder.hostnameVerifier(new HostnameVerifier() {
-				@Override
-				public boolean verify(String hostname, SSLSession session) {
-					return true;
-				}
-			});
-
-			OkHttpClient okHttpClient = builder.build();
-			return okHttpClient;
-		} catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-	}
-
-	/**
 	 * @param requestUrl
 	 * @return
 	 */
@@ -93,7 +43,7 @@ class Service {
 		Gson gson = new Gson();
 		System.out.println("Get Request Url =========================================== " + requestUrl);
 		try {
-			OkHttpClient client = getUnsafeOkHttpClient();// new OkHttpClient.Builder().build();
+			OkHttpClient client = new OkHttpClient.Builder().build();
 			Request request = new Request.Builder().url(requestUrl).build();
 
 			Call call = client.newCall(request);
@@ -130,7 +80,7 @@ class Service {
 		try {
 			String json = gson.toJson(requestData);
 
-			OkHttpClient client = getUnsafeOkHttpClient();// new OkHttpClient.Builder().build();
+			OkHttpClient client = new OkHttpClient.Builder().build();
 			Request request = new Request.Builder().url(requestUrl)
 					.put(RequestBody.create(json, MediaType.parse(contentType))).build();
 
@@ -168,7 +118,7 @@ class Service {
 		try {
 			String json = gson.toJson(requestData);
 
-			OkHttpClient client = getUnsafeOkHttpClient();// new OkHttpClient.Builder().build();
+			OkHttpClient client = new OkHttpClient.Builder().build();
 			Request request = new Request.Builder().url(requestUrl)
 					.post(RequestBody.create(json, MediaType.parse(contentType))).build();
 
@@ -220,7 +170,7 @@ class Service {
 		try {
 			String json = gson.toJson(requestData);
 
-			OkHttpClient client = getUnsafeOkHttpClient();// new OkHttpClient.Builder().build();
+			OkHttpClient client = new OkHttpClient.Builder().build();
 			
 			Request request = new Request.Builder().url(requestUrl)
 					.delete(RequestBody.create(json, MediaType.parse(contentType))).build();
@@ -258,7 +208,7 @@ class Service {
 		System.out.println("Delete Request Url =========================================== " + requestUrl);
 //		"application/x-www-form-urlencoded"
 		try {
-			OkHttpClient client = getUnsafeOkHttpClient();// new OkHttpClient.Builder().build();
+			OkHttpClient client = new OkHttpClient.Builder().build();
 			Request request = new Request.Builder().url(requestUrl)
 					.delete(RequestBody.create(requestData, MediaType.parse(contentType))).build();
 
